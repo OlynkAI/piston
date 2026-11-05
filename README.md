@@ -155,7 +155,7 @@ The training environment and training data are not part of v0.1.
 ```bibtex
 @misc{piston2026,
   title  = {Piston v0.1: a causal model for time series that knows when a question cannot be answered},
-  author = {Chenna, Sai Sathvik and OlynkAI},
+  author = {{Chennapragada Sathvik (Sasache)} and OlynkAI},
   year   = {2026},
   url    = {https://huggingface.co/OlynkAI/piston-v0.1}
 }
