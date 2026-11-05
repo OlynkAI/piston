@@ -12,12 +12,13 @@ pipeline_tag: tabular-regression
 
 # Piston v0.1
 
-> Weights + model card: https://huggingface.co/OlynkAI/piston-v0.1
-
-
-> Weights: https://huggingface.co/OlynkAI/piston-v0.1 (download them into `weights/`).
+> Weights live on Hugging Face: https://huggingface.co/OlynkAI/piston-v0.1 (place them in `weights/`).
 
 **A small causal model for time series that knows when a question cannot be answered.**
+
+<p align="center">
+  <img src="assets/hero.png" alt="Piston v0.1 — knows when a question cannot be answered" width="100%"/>
+</p>
 
 Give it a table of measurements over time (up to 9 variables, 128+ steps) and a what-if question:
 
@@ -27,6 +28,21 @@ It returns the effect with a 90% range, the probability that the data can answer
 
 - 3-seed ensemble of a ~4M-parameter axial transformer (12M parameters in total), trained only on synthetic worlds.
 - A research release by [OLynk](https://huggingface.co/OlynkAI). Apache-2.0.
+- Reproduce package: [github.com/OlynkAI/piston](https://github.com/OlynkAI/piston)
+
+<p align="center">
+  <img src="assets/refuse_concept.png" alt="Always-answer baselines vs Piston selective prediction" width="100%"/>
+</p>
+
+## How it works
+
+<p align="center">
+  <img src="assets/pipeline.png" alt="Piston inference path" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="assets/architecture.png" alt="Piston architecture: axial attention, 3-seed mixture, effect + answerability heads" width="100%"/>
+</p>
 
 ## Results
 
@@ -35,6 +51,22 @@ Frozen benchmark (included): 4,592 questions in 998 synthetic worlds from 23 wor
 **T1** is the area under the risk–coverage curve: answers sorted from most to least confident, risk = share wrong; lower is better. An answer is **wrong** if the true effect is outside the 90% range, the sign is wrong on a real effect, or the question was unanswerable and the method answered anyway. **Confident-wrong** = share of given answers that are wrong. Every method's ranges were widened by the same rule, fitted on held-out training data (never the benchmark), until they cover 90%; Piston needed no widening.
 
 ### No causal graph given
+
+<p align="center">
+  <img src="assets/leaderboard_table.png" alt="Leaderboard table — no causal graph" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="assets/t1_no_graph.png" alt="T1 AURC bar chart — Piston vs baselines" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="assets/confident_wrong.png" alt="Confident-wrong rate comparison" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="assets/gap_vs_ccpfn.png" alt="T1 gap versus CCPFN with bootstrap CI" width="100%"/>
+</p>
 
 | Method | T1 ↓ | T1 95% | Confident-wrong ↓ | Answers | 90% range covers |
 |---|---|---|---|---|---|
@@ -50,6 +82,10 @@ T1 27.6% lower than the strongest baseline (95% interval of the gap: 22.6–32.2
 ### Causal graph known
 
 When the full graph is known, an exact identification algorithm can decide which questions are answerable. The best use of Piston then is as the estimator behind that algorithm.
+
+<p align="center">
+  <img src="assets/graph_settings.png" alt="Piston under none / partial / full graph and exact-ID hybrid" width="100%"/>
+</p>
 
 | Method | T1 ↓ | T1 95% | Confident-wrong ↓ | Answers |
 |---|---|---|---|---|
@@ -93,6 +129,7 @@ Reproduce the tables: `python evaluate_benchmark.py --weights weights --bench be
 
 | Path | Contents |
 |---|---|
+| `assets/` | Figures: hero, architecture, leaderboard charts and tables |
 | `weights/seed0.pt`, `seed1.pt`, `seed2.pt` | The three ensemble members |
 | `piston/` | Model, inference API, benchmark loader, metrics |
 | `benchmark/split_C.npz` | The frozen benchmark: panels, questions, true effects, answerability labels, true graphs |
@@ -128,5 +165,3 @@ The training environment and training data are not part of v0.1.
   url    = {https://huggingface.co/OlynkAI/piston-v0.1}
 }
 ```
-
-
