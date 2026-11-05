@@ -12,9 +12,10 @@ pipeline_tag: tabular-regression
 
 # Piston v0.1
 
-> Live weights (private): https://huggingface.co/7ViksSai/piston-v0.1 — pending transfer to `OlynkAI/piston-v0.1` once org write access is granted.
+> Weights + model card: https://huggingface.co/OlynkAI/piston-v0.1
 
-> Weights: https://huggingface.co/7ViksSai/piston-v0.1 (download them into `weights/`).
+
+> Weights: https://huggingface.co/OlynkAI/piston-v0.1 (download them into `weights/`).
 
 **A small causal model for time series that knows when a question cannot be answered.**
 
@@ -68,7 +69,7 @@ With a partial graph (each pair of variables revealed with probability 0.2–0.8
 
 ```bash
 pip install torch numpy huggingface_hub
-huggingface-cli download 7ViksSai/piston-v0.1 --local-dir piston-v0.1 && cd piston-v0.1
+huggingface-cli download OlynkAI/piston-v0.1 --local-dir piston-v0.1 && cd piston-v0.1
 ```
 
 ```python
@@ -124,7 +125,7 @@ The training environment and training data are not part of v0.1.
   title  = {Piston v0.1: a causal model for time series that knows when a question cannot be answered},
   author = {Chenna, Sai Sathvik and OLynk},
   year   = {2026},
-  url    = {https://huggingface.co/7ViksSai/piston-v0.1}
+  url    = {https://huggingface.co/OlynkAI/piston-v0.1}
 }
 ```
 
