@@ -17,7 +17,7 @@ pipeline_tag: tabular-regression
 **A small causal model for time series that knows when a question cannot be answered.**
 
 <p align="center">
-  <img src="assets/hero.png" alt="Piston v0.1 — knows when a question cannot be answered" width="100%"/>
+  <img src="assets/hero.png" alt="Piston v0.1 — links" width="100%"/>
 </p>
 
 Give it a table of measurements over time (up to 9 variables, 128+ steps) and a what-if question:
@@ -31,17 +31,13 @@ It returns the effect with a 90% range, the probability that the data can answer
 - Reproduce package: [github.com/OlynkAI/piston](https://github.com/OlynkAI/piston)
 
 <p align="center">
-  <img src="assets/refuse_concept.png" alt="Always-answer baselines vs Piston selective prediction" width="100%"/>
+  <img src="assets/refuse_concept.png" alt="Baselines answer 100 percent; Piston answers 90 percent and refuses the rest" width="100%"/>
 </p>
 
 ## How it works
 
 <p align="center">
   <img src="assets/pipeline.png" alt="Piston inference path" width="100%"/>
-</p>
-
-<p align="center">
-  <img src="assets/architecture.png" alt="Piston architecture: axial attention, 3-seed mixture, effect + answerability heads" width="100%"/>
 </p>
 
 ## Results
@@ -65,7 +61,7 @@ Frozen benchmark (included): 4,592 questions in 998 synthetic worlds from 23 wor
 </p>
 
 <p align="center">
-  <img src="assets/gap_vs_ccpfn.png" alt="T1 gap versus CCPFN with bootstrap CI" width="100%"/>
+  <img src="assets/gap_vs_ccpfn.png" alt="Interval widening factors: Piston x1 vs Chronos x21 and TimesFM x56" width="100%"/>
 </p>
 
 | Method | T1 ↓ | T1 95% | Confident-wrong ↓ | Answers | 90% range covers |
