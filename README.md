@@ -12,7 +12,6 @@ pipeline_tag: tabular-regression
 
 # Piston v0.1
 
-> Weights live on Hugging Face: https://huggingface.co/OlynkAI/piston-v0.1 (place them in `weights/`).
 
 **A small causal model for time series that knows when a question cannot be answered.**
 
@@ -27,7 +26,7 @@ Give it a table of measurements over time (up to 9 variables, 128+ steps) and a 
 It returns the effect with a 90% range, the probability that the data can answer the question at all (`p_answerable`), and the probability that the treatment reaches the target at that lag. It reads the data in context: no fitting per dataset.
 
 - 3-seed ensemble of a ~4M-parameter axial transformer (12M parameters in total), trained only on synthetic worlds.
-- A research release by [OLynk](https://huggingface.co/OlynkAI). Apache-2.0.
+- A research release by [OlynkAI](https://huggingface.co/OlynkAI) (Olynk.AI LLP). Apache-2.0.
 - Reproduce package: [github.com/OlynkAI/piston](https://github.com/OlynkAI/piston)
 
 <p align="center">
@@ -156,7 +155,7 @@ The training environment and training data are not part of v0.1.
 ```bibtex
 @misc{piston2026,
   title  = {Piston v0.1: a causal model for time series that knows when a question cannot be answered},
-  author = {Chenna, Sai Sathvik and OLynk},
+  author = {Chenna, Sai Sathvik and OlynkAI},
   year   = {2026},
   url    = {https://huggingface.co/OlynkAI/piston-v0.1}
 }
