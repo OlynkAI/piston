@@ -1,0 +1,5 @@
+﻿weights/
+__pycache__/
+*.pyc
+benchmark_results.json
+.DS_Store
